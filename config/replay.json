@@ -1,0 +1,9 @@
+{
+  "dCKB": {
+    "symbol": "dCKB",
+    "typeHash": "0xe78165e8b96ceea99bf93bdb86cb5b63d32c265045d674bc53da7e444bb31e1a",
+    "decimals": 8,
+    "startDate": "2026-08-01",
+    "source": "CKB Explorer /udt_transactions/{typeHash}"
+  }
+}
