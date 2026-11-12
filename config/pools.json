@@ -1,0 +1,82 @@
+{
+  "RUSD": {
+    "baseSymbol": "RUSD",
+    "baseTypeHash": "0x71ff665b40ba044b1981ea9a8965189559c8e01e8cdfa34a3cc565e1f870a95c",
+    "baseDecimals": 8,
+    "quote": "CKB",
+    "quoteDecimals": 8,
+    "poolLock": {
+      "code_hash": "0x393df3359e33f85010cd65a3c4a4268f72d95ec6b049781a916c680b31ea9a88",
+      "hash_type": "type",
+      "args": "0xf6808f0469c0834edf88744574c159d06ff1e1e7a3f39482799dc454952dda3b"
+    },
+    "poolAddress": "ckb1qqunmue4ncels5qse4j6839yy68h9k27c6cyj7q6j9kxsze3a2dgsq0ksz8sg6wqsd8dlzr5g46vzkwsdlc7rear7w2gy7vac32f2tw68vpemxym",
+    "lpTypeHash": "0xc2f5691d1559559ac461b3046cbc503410ef83cbea2399afaa5211ded9d48362",
+    "poolTypeHash": "0xf6808f0469c0834edf88744574c159d06ff1e1e7a3f39482799dc454952dda3b",
+    "source": "utxoswap:rusd-ckb"
+  },
+  "USDI": {
+    "baseSymbol": "USDI",
+    "baseTypeHash": "0x7f3fba3fb8d6e000176f7e1ae22e8cd02841dec6a8341dc69aeef46387a20664",
+    "baseDecimals": 6,
+    "quote": "CKB",
+    "quoteDecimals": 8,
+    "poolLock": {
+      "code_hash": "0x393df3359e33f85010cd65a3c4a4268f72d95ec6b049781a916c680b31ea9a88",
+      "hash_type": "type",
+      "args": "0x51fd95a675716e4ca2472d19510d7bdd232b78012b79c5d76f4298106d8badcb"
+    },
+    "poolAddress": "ckb1qqunmue4ncels5qse4j6839yy68h9k27c6cyj7q6j9kxsze3a2dgsq23lk26vat3dex2y3edr9gs677ayv4hsqft08zawm6znqgxmzadevg4tma5",
+    "lpTypeHash": "0x996c68f5919cf957c264c6cb8f46280e1c48223d547b471b10de79004444d5e1",
+    "poolTypeHash": "0x51fd95a675716e4ca2472d19510d7bdd232b78012b79c5d76f4298106d8badcb",
+    "source": "utxoswap:usdi-ckb"
+  },
+  "STB": {
+    "baseSymbol": "STB",
+    "baseTypeHash": "0x7aaab7f33ff85618e9b1d88f57dc5607554cfd5ae347f295b47bd1f16ae84a1a",
+    "baseDecimals": 8,
+    "quote": "CKB",
+    "quoteDecimals": 8,
+    "poolLock": {
+      "code_hash": "0x393df3359e33f85010cd65a3c4a4268f72d95ec6b049781a916c680b31ea9a88",
+      "hash_type": "type",
+      "args": "0x235edb927fc68f446e06f2e677fb52aa7f158ae8aa6568c4d567934de8a90ff0"
+    },
+    "poolAddress": "ckb1qqunmue4ncels5qse4j6839yy68h9k27c6cyj7q6j9kxsze3a2dgsqfrtmdeyl7x3azxuphjuemlk5420u2c4692v45vf4t8jdx732g07qsghkxp",
+    "lpTypeHash": "0xfc624858f0a221e5096d96b5ec1eb01a526eef13e8939aeb165602d054670f1b",
+    "poolTypeHash": "0x235edb927fc68f446e06f2e677fb52aa7f158ae8aa6568c4d567934de8a90ff0",
+    "source": "utxoswap:stb-ckb"
+  },
+  "Seal": {
+    "baseSymbol": "Seal",
+    "baseTypeHash": "0x178fb47b597a56d48b549226aff59f750b4784250c7f40f781b64ef090a8a0a7",
+    "baseDecimals": 8,
+    "quote": "CKB",
+    "quoteDecimals": 8,
+    "poolLock": {
+      "code_hash": "0x393df3359e33f85010cd65a3c4a4268f72d95ec6b049781a916c680b31ea9a88",
+      "hash_type": "type",
+      "args": "0x29273406698f36e9bdf46db404176859b0ba3a6bdf7025833f7fd3b49150609a"
+    },
+    "poolAddress": "ckb1qqunmue4ncels5qse4j6839yy68h9k27c6cyj7q6j9kxsze3a2dgsqffyu6qv6v0xm5mmardkszpw6zekzar567lwqjcx0ml6w6fz5rqngfq79ec",
+    "lpTypeHash": "0x17e3a05e0a33dd00eb601ee4f0115039168930a5ce98c5455e5be456e2ba2de8",
+    "poolTypeHash": "0x29273406698f36e9bdf46db404176859b0ba3a6bdf7025833f7fd3b49150609a",
+    "source": "utxoswap:seal-ckb"
+  },
+  "BTC": {
+    "baseSymbol": "BTC",
+    "baseTypeHash": "0x3cd44aecea36e0a27e671f1fc79e65add7bf2f0e8b368389dc810ec81c63fa57",
+    "baseDecimals": 8,
+    "quote": "CKB",
+    "quoteDecimals": 8,
+    "poolLock": {
+      "code_hash": "0x393df3359e33f85010cd65a3c4a4268f72d95ec6b049781a916c680b31ea9a88",
+      "hash_type": "type",
+      "args": "0xc3a8ec1a821b477084a8d025affe2c5f5f752c5978deaa6ef66fb926887a361c"
+    },
+    "poolAddress": "ckb1qqunmue4ncels5qse4j6839yy68h9k27c6cyj7q6j9kxsze3a2dgsqwr4rkp4qsmgacgf2xsykhlutzlta6jcktcm64xaan0hyngs73krsgsm4ph",
+    "lpTypeHash": "0x95ececa64facb527e57073062ac30ca5e96849cc79a73e80f3c2e6314c11932a",
+    "poolTypeHash": "0xc3a8ec1a821b477084a8d025affe2c5f5f752c5978deaa6ef66fb926887a361c",
+    "source": "utxoswap:btc-ckb"
+  }
+}

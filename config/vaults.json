@@ -1,0 +1,14 @@
+{
+  "iCKB": {
+    "kind": "ickb",
+    "lock": {
+      "code_hash": "0x2a8100ab5990fa055ab1b50891702e1e895c7bd1df6322cd725c1a6115873bd3",
+      "hash_type": "data1",
+      "args": "0x"
+    },
+    "tokenTypeHash": "0xd485c2271949c232e3f5d46128336c716f90bcbf3cb278696083689fbbcd407a",
+    "tokenDecimals": 8,
+    "source": "iCKB Logic DAO deposits + Explorer supply",
+    "notes": "The iCKB Logic lock holds NervosDAO deposits. Exchange rate = CKB deposits / iCKB supply."
+  }
+}
