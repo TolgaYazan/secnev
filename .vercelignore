@@ -1,0 +1,7 @@
+research/
+docs/assets/
+tests/
+tmp-*
+.env
+.env.*
+!.env.example
