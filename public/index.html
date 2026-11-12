@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>secnev — CKB risk observatory</title>
+    <meta
+      name="description"
+      content="Open, CKB-native risk intelligence for stablecoins, vaults, tokens and wallets."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark"><img src="/logo.svg" alt="" width="38" height="38" /></div>
+        <div>
+          <div class="name">secnev</div>
+          <div class="tag">CKB risk observatory</div>
+        </div>
+      </div>
+      <nav>
+        <button data-tab="overview" class="active">Overview</button>
+        <button data-tab="assets">Assets</button>
+        <button data-tab="alerts">Alerts</button>
+        <button data-tab="wallet">Wallet</button>
+        <button data-tab="incidents">Incidents</button>
+        <button data-tab="methodology">Methodology</button>
+      </nav>
+      <div class="status"><span class="dot"></span><span id="status-text">loading</span></div>
+    </header>
+
+    <main>
+      <section id="tab-overview" class="tab active">
+        <div class="hero">
+          <div>
+            <div class="eyebrow">PUBLIC GOOD · CKB-NATIVE</div>
+            <h1>Risk intelligence for the CKB economy.</h1>
+            <p class="lede">
+              Independent scores and evidence for stablecoins, vaults and xUDT/RGB++ tokens.
+              Every number is traceable. Unknown data is never treated as safe.
+            </p>
+          </div>
+          <div class="hero-note">
+            <div class="label">Methodology</div>
+            <div class="big">v<span id="method-version">0.1</span></div>
+            <div class="muted">Open · versioned · reproducible</div>
+          </div>
+        </div>
+
+        <div class="cards" id="stats"></div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Live assets</h2>
+            <div class="muted" id="asset-count"></div>
+          </div>
+          <div class="table-wrap">
+            <table id="assets-table">
+              <thead>
+                <tr>
+                  <th>Asset</th>
+                  <th>Type</th>
+                  <th>Score</th>
+                  <th>Grade</th>
+                  <th>Tier</th>
+                  <th>Coverage</th>
+                  <th>Supply</th>
+                  <th>Holders</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="empty" id="assets-empty" hidden>No assets ingested yet. Run <code>npm run ingest</code>.</div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Recent alerts</h2>
+            <div class="muted">Tier changes and score jumps</div>
+          </div>
+          <div id="overview-alerts" class="feed"></div>
+        </div>
+      </section>
+
+      <section id="tab-assets" class="tab">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>All assets</h2>
+            <input id="search" type="search" placeholder="Search symbol or name…" />
+          </div>
+          <div class="table-wrap">
+            <table id="assets-table-full">
+              <thead>
+                <tr>
+                  <th>Asset</th>
+                  <th>Type</th>
+                  <th>Score</th>
+                  <th>Grade</th>
+                  <th>Tier</th>
+                  <th>Confidence</th>
+                  <th>Peg</th>
+                  <th>Coverage</th>
+                  <th>Price</th>
+                  <th>Holders</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-alerts" class="tab">
+        <div class="panel">
+          <div class="panel-head"><h2>Alert feed</h2><div class="muted">Last 100</div></div>
+          <div id="alerts-feed" class="feed"></div>
+        </div>
+      </section>
+
+      <section id="tab-wallet" class="tab">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Wallet exposure</h2>
+            <div class="muted">Labels + counterparties · not KYC/AML</div>
+          </div>
+          <p class="muted">
+            Checks the lock label, CKB balance, token holdings and recent counterparties.
+            Taint is <code>unknown</code> until a taint source is integrated.
+          </p>
+          <form id="wallet-form" class="wallet-form">
+            <input id="wallet-address" type="text" spellcheck="false"
+              placeholder="ckb1… address" autocomplete="off" />
+            <button type="submit">Check address</button>
+          </form>
+          <div id="wallet-result"></div>
+        </div>
+      </section>
+
+      <section id="tab-incidents" class="tab">
+        <div class="panel">
+          <div class="panel-head"><h2>Incident registry</h2><div class="muted">Curated, sourced</div></div>
+          <div id="incidents-list" class="incidents"></div>
+        </div>
+      </section>
+
+      <section id="tab-methodology" class="tab">
+        <div class="panel">
+          <div class="panel-head"><h2>Methodology</h2><div class="muted">v<span id="method-version-2"></span></div></div>
+          <div id="methodology-body"></div>
+        </div>
+      </section>
+    </main>
+
+    <aside id="drawer" class="drawer" aria-hidden="true">
+      <div class="drawer-head">
+        <div>
+          <div class="eyebrow" id="drawer-type"></div>
+          <h2 id="drawer-title"></h2>
+          <div class="muted" id="drawer-sub"></div>
+        </div>
+        <button id="drawer-close" class="icon" aria-label="Close">×</button>
+      </div>
+      <div id="drawer-body" class="drawer-body"></div>
+    </aside>
+    <div id="scrim" class="scrim" hidden></div>
+
+    <footer>
+      <div>secnev · open CKB risk observatory · Apache-2.0 · data CC BY 4.0</div>
+      <div class="muted">Informational only. Not investment, legal or compliance advice.</div>
+    </footer>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
