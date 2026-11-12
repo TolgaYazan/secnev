@@ -1,0 +1,44 @@
+{
+  "dCKB": [
+    {
+      "id": "dckb-drain-2026",
+      "date": "2026-08-26",
+      "category": "vault",
+      "mechanism": "logic error / transaction-wide validation",
+      "loss": "~24.6M CKB",
+      "status": "resolved-as-loss",
+      "summary": "dCKB scripts validated the transaction as a whole, so one fresh deposit with a receipt unlocked many deposits. 201 deposits were drained; the remaining 196 deposits were claimed on 2026-10-18 and cashed out. dCKB is unbacked.",
+      "links": [
+        "https://talk.nervos.org/t/dckb-post-post-mortem-now-the-funds-are-gone/11016"
+      ]
+    }
+  ],
+  "RGB++": [
+    {
+      "id": "rgbpp-forged-proof-2026",
+      "date": "2026-08-15",
+      "category": "bridge",
+      "mechanism": "proof binding / verification",
+      "loss": "16.59M CKB",
+      "status": "reported",
+      "summary": "Per the ckb-adversary proposal, 16.59M CKB was taken from RGB++ cells with 1,464 forged Bitcoin proofs and went unnoticed for 80 days. A verification result was checked for an error but not for validity.",
+      "links": [
+        "https://talk.nervos.org/t/spark-program-ckb-adversary-generic-attacks-on-real-ckb-transactions-before-you-deploy/11142"
+      ]
+    }
+  ],
+  "iCKB": [
+    {
+      "id": "ickb-limit-order-confusion",
+      "date": "2026-05-02",
+      "category": "vault",
+      "mechanism": "limit order / phantom order",
+      "loss": "none observed",
+      "status": "known-issue",
+      "summary": "Anyone can create fake limit orders; an owner can be tricked into melting the wrong one, stranding funds. The iCKB stack mitigates client-side by rejecting orders that differ from the original mint order.",
+      "links": [
+        "https://talk.nervos.org/t/ickb-contracts-revisited-old-code-new-audit/10225"
+      ]
+    }
+  ]
+}

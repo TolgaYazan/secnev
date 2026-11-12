@@ -1,0 +1,17 @@
+{
+  "ckb1qg56s9rnufyjfcu54y2g4v6hcfyjlm0k2fqcfzm6safe5ldec02rlclf85g06zl5hnud480vtxj37zp4yxe7zxssqampfva48wfn0ykkpuqqqqqc9whcp": {
+    "label": "dCKB issuer (legacy NexisDAO)",
+    "kind": "incident",
+    "risk": 80
+  },
+  "ckb1qpt0kce2zw4a44es35hqxja2u89sf85w3lere37qk62ynash2jtnxqtmqecp56kf2jx65zdgr0983xgmeglmku62zhqrxz78r0klaqrv2cssrj8t": {
+    "label": "RUSD issuer (Stable++)",
+    "kind": "issuer",
+    "risk": 0
+  },
+  "ckb1qrgqep8saj8agswr30pls73hra28ry8jlnlc3ejzh3dl2ju7xxpjxqgqq8we8qft3s9u47pfv5c2uq4xexurymlgfc6hvrcf": {
+    "label": "USDI issuer",
+    "kind": "issuer",
+    "risk": 0
+  }
+}

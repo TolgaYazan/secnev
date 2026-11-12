@@ -1,0 +1,37 @@
+{
+  "0x9bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce8": {
+    "name": "SECP256K1/blake160",
+    "kind": "wallet",
+    "excludeFromOrganic": false
+  },
+  "0xd00c84f0ec8fd441c38bc3f87a371f547190f2fcff88e642bc5bf54b9e318323": {
+    "name": "JoyID",
+    "kind": "wallet",
+    "excludeFromOrganic": false
+  },
+  "0x9b819793a64463aed77c615d6cb226eea5487ccfc0783043a587254cda2b6f26": {
+    "name": "OMNI Lock V2",
+    "kind": "wallet",
+    "excludeFromOrganic": false
+  },
+  "0x641a89ad2f77721b803cd50d01351c1f308444072d5fa20088567196c0574c68": {
+    "name": "Nostr",
+    "kind": "wallet",
+    "excludeFromOrganic": false
+  },
+  "0x56fb632a13abdad7308d2e034baae1cb049e8e8ff23cc7c0b69449f617549733": {
+    "name": "Stable++ Intent Lock",
+    "kind": "protocol",
+    "excludeFromOrganic": true
+  },
+  "0x393df3359e33f85010cd65a3c4a4268f72d95ec6b049781a916c680b31ea9a88": {
+    "name": "UTXOSwap pool lock",
+    "kind": "dex",
+    "excludeFromOrganic": true
+  },
+  "0xbfa35a9c38a676682b65ade8f02be164d48632281477e36f8dc2f41f79e56bfc": {
+    "name": "RGB++ lock",
+    "kind": "protocol",
+    "excludeFromOrganic": false
+  }
+}

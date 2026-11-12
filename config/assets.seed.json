@@ -1,0 +1,164 @@
+[
+  {
+    "symbol": "RUSD",
+    "name": "RUSD",
+    "typeHash": "0x71ff665b40ba044b1981ea9a8965189559c8e01e8cdfa34a3cc565e1f870a95c",
+    "typeScript": {
+      "args": "0x360c9d87b2824c357958c23e8878f686001e88e9527a08ea229e7d9ba7fe39a7",
+      "code_hash": "0x26a33e0815888a4a0614a0b7d09fa951e0993ff21e55905510104a0b1312032b",
+      "hash_type": "type"
+    },
+    "decimals": 8,
+    "issuer": "ckb1qpt0kce2zw4a44es35hqxja2u89sf85w3lere37qk62ynash2jtnxqtmqecp56kf2jx65zdgr0983xgmeglmku62zhqrxz78r0klaqrv2cssrj8t",
+    "holders": 232,
+    "supply": "6913785413243",
+    "tags": [
+      "rgb++",
+      "layer-2-asset",
+      "supply-unlimited"
+    ],
+    "createdAt": "1728464144855",
+    "udtType": "xudt_compatible"
+  },
+  {
+    "symbol": "iCKB",
+    "name": "iCKB",
+    "typeHash": "0xd485c2271949c232e3f5d46128336c716f90bcbf3cb278696083689fbbcd407a",
+    "typeScript": {
+      "args": "0xb73b6ab39d79390c6de90a09c96b290c331baf1798ed6f97aed02590929734e800000080",
+      "code_hash": "0x50bd8d6680b8b9cf98b73f3c08faf8b2a21914311954118ad6609be6e78a1b95",
+      "hash_type": "data1"
+    },
+    "decimals": 8,
+    "issuer": null,
+    "holders": 35,
+    "supply": "219999991970001",
+    "tags": [
+      "utility",
+      "rgb++"
+    ],
+    "createdAt": "1728466419646",
+    "udtType": "xudt"
+  },
+  {
+    "symbol": "STB",
+    "name": "STB",
+    "typeHash": "0x7aaab7f33ff85618e9b1d88f57dc5607554cfd5ae347f295b47bd1f16ae84a1a",
+    "typeScript": {
+      "args": "0xd7b5e6117759193f963b77aa255416e080c20fa041cca521f0141e48f7904999",
+      "code_hash": "0x50bd8d6680b8b9cf98b73f3c08faf8b2a21914311954118ad6609be6e78a1b95",
+      "hash_type": "data1"
+    },
+    "decimals": 8,
+    "issuer": "ckb1qzpfq3n62yh9hxnts9jxnv8d4wap7jkywn3gllwkqnp203myg6a67q5sd9nm5h56cxd3nx6zt8wx5hqhuc5vulseje5z7vmqq2tdytct5sqqqqqqnzpy8u",
+    "holders": 3032,
+    "supply": "2099904249530395",
+    "tags": [
+      "supply-limited",
+      "rgb++"
+    ],
+    "createdAt": "1722734865413",
+    "udtType": "xudt"
+  },
+  {
+    "symbol": "Seal",
+    "name": "Seal",
+    "typeHash": "0x178fb47b597a56d48b549226aff59f750b4784250c7f40f781b64ef090a8a0a7",
+    "typeScript": {
+      "args": "0x2ae639d6233f9b15545573b8e78f38ff7aa6c7bf8ef6460bf1f12d0a76c09c4e",
+      "code_hash": "0x50bd8d6680b8b9cf98b73f3c08faf8b2a21914311954118ad6609be6e78a1b95",
+      "hash_type": "data1"
+    },
+    "decimals": 8,
+    "issuer": "ckb1qz7xc452rgxs5z0ks3xun46dmdp58sepg0ljtae8ck0d7nah945nvqgpqqqqpg840kldpmna3xlagw8ehvggfl4ngzkd50anc936nm475wrstxf5v39jp9",
+    "holders": 11642,
+    "supply": "1606360356572848",
+    "tags": [
+      "rgb++",
+      "layer-1-asset",
+      "supply-limited"
+    ],
+    "createdAt": "1712175568610",
+    "udtType": "xudt"
+  },
+  {
+    "symbol": "USDI",
+    "name": "USDI",
+    "typeHash": "0x7f3fba3fb8d6e000176f7e1ae22e8cd02841dec6a8341dc69aeef46387a20664",
+    "typeScript": {
+      "args": "0xd591ebdc69626647e056e13345fd830c8b876bb06aa07ba610479eb77153ea9f",
+      "code_hash": "0xbfa35a9c38a676682b65ade8f02be164d48632281477e36f8dc2f41f79e56bfc",
+      "hash_type": "type"
+    },
+    "decimals": 6,
+    "issuer": "ckb1qrgqep8saj8agswr30pls73hra28ry8jlnlc3ejzh3dl2ju7xxpjxqgqq8we8qft3s9u47pfv5c2uq4xexurymlgfc6hvrcf",
+    "holders": 665,
+    "supply": "207911000610",
+    "tags": [
+      "rgb++",
+      "layer-2-asset",
+      "supply-unlimited"
+    ],
+    "createdAt": "1734678212908",
+    "udtType": "xudt_compatible"
+  },
+  {
+    "symbol": "AGENT",
+    "name": "AI Agent Token",
+    "typeHash": "0x59f9e9966f4b0e8578c1b73fb3eb06241607bff05e17d7869d4a17293303a27b",
+    "typeScript": {
+      "args": "0xf99bb85bbd9380136c3ea34c57932239147241e751aa18d4caab14594bb360a7",
+      "code_hash": "0x50bd8d6680b8b9cf98b73f3c08faf8b2a21914311954118ad6609be6e78a1b95",
+      "hash_type": "data1"
+    },
+    "decimals": 8,
+    "issuer": "ckb1qqkl2w6e9ke6ud59kau84h877qej5cg7mwpu50lv5s6cpxtycwhlyq3fg4pn5ujgzfyw3l2333r2tjrhmustaxndamfw8hu5g0g94t7lcumgvjk5",
+    "holders": 15,
+    "supply": "100000000000000000",
+    "tags": [
+      "rgb++",
+      "layer-2-asset",
+      "supply-unlimited"
+    ],
+    "createdAt": "1771531015680",
+    "udtType": "xudt"
+  },
+  {
+    "symbol": "KOI",
+    "name": "StableKoi Token",
+    "typeHash": "0x1ebe22fe7d9740e56998b6b874aac985af4ca4040d82b251951fb536f405244d",
+    "typeScript": {
+      "args": "0x68ab5e63d676ce31c56c73d037f38bc35398d4af94b43f8717832c1c81eb251e",
+      "code_hash": "0x5e7a36a77e68eecc013dfa2fe6a23f3b6c344b04005808694ae6dd45eea4cfd5",
+      "hash_type": "type"
+    },
+    "decimals": 18,
+    "issuer": "ckb1qz0n46hjl3pe2jwtepcvv5ehf9p6l94qvk9addgmarvfsvvrum6j7qgpma4tnak67fwm6v238fkvc3que7eppffupq8n2g9gvm8zfnzhk2t6gst958ncz84zw9l8nzd42faw9uf94yhnjdqve5h",
+    "holders": 0,
+    "supply": "392700000100000000000000000000",
+    "tags": [],
+    "createdAt": "1658201333317",
+    "udtType": "sudt"
+  },
+  {
+    "symbol": "BTC",
+    "name": "ccBTC",
+    "typeHash": "0x3cd44aecea36e0a27e671f1fc79e65add7bf2f0e8b368389dc810ec81c63fa57",
+    "typeScript": {
+      "args": "0x68e64ba4b0daeeec45c1f983d6d574fca370442cafb805bc4265ef74870a4ac8",
+      "code_hash": "0x092c2c4a26ea475a8e860c29cf00502103add677705e2ccd8d6fe5af3caa5ae3",
+      "hash_type": "type"
+    },
+    "decimals": 8,
+    "issuer": "ckb1qzdcr9un5ezx8tkh03s46m9jymh22jruelq8svzr5krj2nx69dhjvqgx6gsml975rhjhy23mjnlg227kgskgycpsqqnr3s4r",
+    "holders": 129,
+    "supply": "4833612",
+    "tags": [
+      "rgb++",
+      "layer-2-asset",
+      "supply-unlimited"
+    ],
+    "createdAt": "1717492287008",
+    "udtType": "xudt_compatible"
+  }
+]

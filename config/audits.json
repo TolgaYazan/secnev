@@ -1,0 +1,46 @@
+{
+  "iCKB": {
+    "audited": true,
+    "firms": ["ScaleBit"],
+    "lastAudit": "2024-09-10",
+    "executableReview": "2026-05-01",
+    "notes": "ScaleBit audit (3 findings: 2 informational, 1 minor) plus executable review of deployed binaries; immutable scripts, no admin keys. Known limit-order confusion issue mitigated client-side."
+  },
+  "RUSD": {
+    "audited": false,
+    "firms": [],
+    "lastAudit": null,
+    "notes": "No public third-party audit found in the Stable++ documentation at the time of writing."
+  },
+  "STB": {
+    "audited": false,
+    "firms": [],
+    "lastAudit": null
+  },
+  "Seal": {
+    "audited": false,
+    "firms": [],
+    "lastAudit": null
+  },
+  "USDI": {
+    "audited": false,
+    "firms": [],
+    "lastAudit": null
+  },
+  "AGENT": {
+    "audited": false,
+    "firms": [],
+    "lastAudit": null
+  },
+  "KOI": {
+    "audited": false,
+    "firms": [],
+    "lastAudit": null
+  },
+  "BTC": {
+    "audited": false,
+    "firms": [],
+    "lastAudit": null,
+    "notes": "ccBTC is a custodial wrapper; upstream custody trust is not removed by CKB scripts."
+  }
+}
