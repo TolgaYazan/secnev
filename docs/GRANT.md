@@ -205,17 +205,17 @@ Why us: the MVP already exists, the docs are mirrored and cited, the code is CKB
 
 ---
 
-## 12. Smaller alternative: Spark request ($2,000)
+## 12. Smaller alternative: Spark request ($1,000, 100% CKB)
 
-If the full grant is premature, fund only:
+If the full grant is premature, fund only the **Stable++ protocol-state module**:
 
-- persistent incremental indexer (full scans and real dCKB transaction replay already work);
-- 15 assets + 15 signals;
-- Stable++ CR/TCR/oracle + MoniMkt protocol-state adapters;
-- AGENT/KOI pool discovery and a second venue;
-- public demo + methodology v0.4.
+- map the Stable++ vault/debt/oracle/redemption cells;
+- add `collateral_health`, `oracle_health` and `redemption_state` to the live RUSD score;
+- integrate them into the dashboard/API with evidence and coverage;
+- run 10 real user-validation sessions;
+- publish a validation report and completion report.
 
-Organic holder concentration, five live pools, iCKB exchange rate, wallet exposure, real replay, full scans, webhook/Telegram/email are already built; the Spark scope is the remaining hardening. This is a 4-week scope and produces the evidence needed for the larger grant.
+This is a 6-week scope. The existing MVP already covers RUSD/USDI market price and liquidity, iCKB exchange rate/backing, holder concentration, wallet exposure, real dCKB replay, full scans and multi-channel alerts. See [`docs/GRANT_SPARK.md`](GRANT_SPARK.md) for the ready-to-post application.
 
 ---
 
