@@ -61,7 +61,7 @@ Sources:
 ## What this means for secnev
 
 - Apply for **$1,000, 100% in CKB**.
-- Scope: **Developer Portal v1** — `/developers`, self-serve hashed API keys, usage/rate limits, OpenAPI 3.1, TypeScript SDK, and 10 developer-validation sessions.
+- Scope: **Stable++ protocol state + Developer Portal v1** — collateral/TCR/CCR, oracle health, redemption state; `/developers`, hashed API keys, usage/rate limits, OpenAPI 3.1, TypeScript SDK; 10 user/developer validation sessions.
 - 6 weeks; weekly verifiable outputs.
 - Current MVP is already live, so the proposal must clearly separate **current state** from **funded delta**.
 - Identity/proof repo: `https://github.com/TolgaYazan/secnev`.

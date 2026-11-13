@@ -207,17 +207,14 @@ Why us: the MVP already exists, the docs are mirrored and cited, the code is CKB
 
 ## 12. Smaller alternative: Spark request ($1,000, 100% CKB)
 
-If the full grant is premature, fund only **Developer Portal v1**:
+If the full grant is premature, fund the **product-completion pass**:
 
-- `/developers` onboarding page with quickstart and API reference;
-- self-serve, hashed API keys with revocation;
-- usage metering and free-tier limits;
-- OpenAPI 3.1 contract;
-- TypeScript SDK;
-- 10 developer-validation sessions;
+- **Stable++ protocol state**: collateral/TCR/CCR, oracle health, redemption/withdrawal state;
+- **Developer Portal v1**: `/developers`, hashed API keys, usage limits, OpenAPI 3.1, TypeScript SDK;
+- 10 user/developer validation sessions;
 - public validation and completion reports.
 
-This is a 6-week scope. The existing MVP already covers the risk engine, dashboard, API, pools, iCKB, wallet exposure, real dCKB replay and alerts; Spark funds the missing developer distribution layer. See [`docs/GRANT_SPARK.md`](GRANT_SPARK.md) for the ready-to-post application.
+This is a 6-week scope. The existing MVP already covers the risk engine, dashboard, API, pools, iCKB, wallet exposure, real dCKB replay and alerts; Spark funds the two missing halves: protocol solvency and developer access. See [`docs/GRANT_SPARK.md`](GRANT_SPARK.md) for the ready-to-post application.
 
 ---
 
