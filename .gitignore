@@ -10,3 +10,5 @@ research/webacy/
 
 .vercel/
 .vercel-token
+.vercel
+.env*

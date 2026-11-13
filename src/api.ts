@@ -39,6 +39,40 @@ function parseTags(row: Record<string, unknown>) {
   }
 }
 
+function respondAsset(
+  res: import("node:http").ServerResponse,
+  id: string,
+): void {
+  const asset = getAssetDetail(id);
+  if (!asset) {
+    json(res, 404, { error: "asset_not_found", id });
+    return;
+  }
+  json(res, 200, asset);
+}
+
+function respondHistory(
+  res: import("node:http").ServerResponse,
+  id: string,
+): void {
+  json(res, 200, { data: getHistory(id) });
+}
+
+async function respondWallet(
+  res: import("node:http").ServerResponse,
+  address: string,
+): Promise<void> {
+  try {
+    const snapshot = await getWalletSnapshot(address);
+    json(res, 200, snapshot);
+  } catch (error) {
+    json(res, 400, {
+      error: "invalid_wallet_address",
+      message: error instanceof Error ? error.message : String(error),
+    });
+  }
+}
+
 function methodology() {
   return {
     version: config.methodologyVersion,
@@ -117,22 +151,35 @@ export async function handleApi(
     return true;
   }
 
-  const assetMatch = pathname.match(/^\/api\/v1\/assets\/([^/]+)$/);
-  if (assetMatch && req.method === "GET") {
-    const id = decodeURIComponent(assetMatch[1]!);
-    const asset = getAssetDetail(id);
-    if (!asset) {
-      json(res, 404, { error: "asset_not_found", id });
+  if (pathname === "/api/v1/asset" && req.method === "GET") {
+    const id = url.searchParams.get("id");
+    if (!id) {
+      json(res, 400, { error: "missing_id" });
       return true;
     }
-    json(res, 200, asset);
+    respondAsset(res, id);
+    return true;
+  }
+
+  const assetMatch = pathname.match(/^\/api\/v1\/assets\/([^/]+)$/);
+  if (assetMatch && req.method === "GET") {
+    respondAsset(res, decodeURIComponent(assetMatch[1]!));
+    return true;
+  }
+
+  if (pathname === "/api/v1/history" && req.method === "GET") {
+    const id = url.searchParams.get("id");
+    if (!id) {
+      json(res, 400, { error: "missing_id" });
+      return true;
+    }
+    respondHistory(res, id);
     return true;
   }
 
   const historyMatch = pathname.match(/^\/api\/v1\/assets\/([^/]+)\/history$/);
   if (historyMatch && req.method === "GET") {
-    const id = decodeURIComponent(historyMatch[1]!);
-    json(res, 200, { data: getHistory(id) });
+    respondHistory(res, decodeURIComponent(historyMatch[1]!));
     return true;
   }
 
@@ -164,18 +211,19 @@ export async function handleApi(
     return true;
   }
 
+  if (pathname === "/api/v1/wallet" && req.method === "GET") {
+    const address = url.searchParams.get("address");
+    if (!address) {
+      json(res, 400, { error: "missing_address" });
+      return true;
+    }
+    await respondWallet(res, address);
+    return true;
+  }
+
   const walletMatch = pathname.match(/^\/api\/v1\/wallet\/(.+)$/);
   if (walletMatch && req.method === "GET") {
-    const address = decodeURIComponent(walletMatch[1]!);
-    try {
-      const snapshot = await getWalletSnapshot(address);
-      json(res, 200, snapshot);
-    } catch (error) {
-      json(res, 400, {
-        error: "invalid_wallet_address",
-        message: error instanceof Error ? error.message : String(error),
-      });
-    }
+    await respondWallet(res, decodeURIComponent(walletMatch[1]!));
     return true;
   }
 

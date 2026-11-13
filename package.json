@@ -9,8 +9,8 @@
     "node": ">=24"
   },
   "scripts": {
-    "dev": "tsx watch src/server.ts",
-    "start": "node dist/server.js",
+    "dev": "tsx watch src/local-server.ts",
+    "start": "node dist/local-server.js",
     "build": "tsc -p tsconfig.build.json",
     "ingest": "tsx src/cli/ingest.ts",
     "replay": "tsx src/cli/replay.ts",

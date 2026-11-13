@@ -1,13 +1,77 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm run build",
-  "outputDirectory": "public",
-  "functions": {
-    "api/**/*.ts": {
-      "maxDuration": 300,
-      "includeFiles": "data/secnev.snapshot.db"
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/**/*.ts",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": "data/secnev.snapshot.db"
+      }
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
     }
-  },
+  ],
+  "routes": [
+    {
+      "src": "/api/v1/assets/([^/]+)/history",
+      "dest": "/api/v1/history.ts?id=$1"
+    },
+    {
+      "src": "/api/v1/assets/([^/]+)",
+      "dest": "/api/v1/asset.ts?id=$1"
+    },
+    {
+      "src": "/api/v1/wallet/([^/]+)",
+      "dest": "/api/v1/wallet.ts?address=$1"
+    },
+    {
+      "src": "/api/v1/health",
+      "dest": "/api/v1/health.ts"
+    },
+    {
+      "src": "/api/v1/stats",
+      "dest": "/api/v1/stats.ts"
+    },
+    {
+      "src": "/api/v1/assets",
+      "dest": "/api/v1/assets.ts"
+    },
+    {
+      "src": "/api/v1/alerts",
+      "dest": "/api/v1/alerts.ts"
+    },
+    {
+      "src": "/api/v1/incidents",
+      "dest": "/api/v1/incidents.ts"
+    },
+    {
+      "src": "/api/v1/pools",
+      "dest": "/api/v1/pools.ts"
+    },
+    {
+      "src": "/api/v1/vaults",
+      "dest": "/api/v1/vaults.ts"
+    },
+    {
+      "src": "/api/v1/methodology",
+      "dest": "/api/v1/methodology.ts"
+    },
+    {
+      "src": "/api/cron/ingest",
+      "dest": "/api/cron/ingest.ts"
+    },
+    {
+      "src": "/",
+      "dest": "/public/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ],
   "crons": [
     {
       "path": "/api/cron/ingest",

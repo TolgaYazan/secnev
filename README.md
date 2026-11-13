@@ -203,7 +203,7 @@ src/
   scoring.ts         weights, grades, tiers, coverage
   ingest.ts          ingest + alert pipeline
   db.ts              SQLite schema and queries
-  api.ts / server.ts REST API + static dashboard
+  api.ts / local-server.ts REST API + static dashboard
 public/              dashboard (vanilla JS, no build step)
 api/                 Vercel functions (flat routes; no catch-all)
 config/              assets, labels, pools, audits, incidents, optional prices

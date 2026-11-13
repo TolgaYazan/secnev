@@ -13,7 +13,7 @@ api/cron/ingest.ts          optional daily refresh (Vercel Cron + Blob)
 
 - The dashboard and API are read-only on Vercel.
 - `node:sqlite` opens the snapshot read-only from `/tmp`.
-- `POST /api/v1/ingest` returns `503 read_only` on Vercel.
+- `POST /api/v1/ingest` is not exposed on Vercel (the route is intentionally omitted); use the cron or run locally.
 - With Vercel Blob configured, the daily cron downloads the latest DB, runs a full ingest, checkpoints it, and uploads it back.
 - Without Blob, Vercel serves the committed snapshot and stays read-only.
 
@@ -70,6 +70,7 @@ It returns the ingest stats and the uploaded Blob URL.
 | Cron frequency | Once per day | Daily at 03:00 UTC |
 | Function max duration | 300s | Full ingest ~60s; Seal ~43s |
 | Function memory/CPU | 2 GB / 1 vCPU | Well within |
+| Serverless functions per deployment | 12 | 12 (11 API routes + cron) |
 | Function invocations | 1M/month | API + one cron/day |
 | Deployments/day | 100 | Fine |
 | Static uploads | 100 MB | Public assets are tiny; snapshot ~1.2 MB |
@@ -82,7 +83,7 @@ Vercel Hobby cron timing is approximate (within the scheduled hour), and Hobby i
 |---|---|---|
 | `BLOB_READ_WRITE_TOKEN` | No | Persist the daily cron ingest to Vercel Blob |
 | `CRON_SECRET` | For cron | Authenticate Vercel Cron requests |
-| `ADMIN_TOKEN` | No | Local/manual `POST /api/v1/ingest`; disabled on Vercel |
+| `ADMIN_TOKEN` | No | Local/manual `POST /api/v1/ingest`; the route is not deployed on Vercel |
 | `CKB_RPC_URL` | No | Override the public CKB RPC |
 | `CKB_EXPLORER_URL` | No | Override the Explorer API |
 | `MAX_CELL_PAGES` | No | `0` = full scan (default) |
@@ -94,7 +95,7 @@ Vercel Hobby cron timing is approximate (within the scheduled hour), and Hobby i
 |---|---|---|
 | Dashboard/API | Live | Live (read-only snapshot) |
 | Full ingest | Yes | Daily cron with Blob |
-| `POST /api/v1/ingest` | Yes (admin token) | `503 read_only` |
+| `POST /api/v1/ingest` | Yes (admin token) | Not exposed (use cron/local) |
 | SQLite | `data/secnev.db` (WAL) | `/tmp/secnev.db` (read-only) |
 | Alerts | Stored + delivered | Stored in snapshot; cron alerts delivered |
 
