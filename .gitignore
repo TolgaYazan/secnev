@@ -7,3 +7,6 @@ research/webacy/
 *.log
 .DS_Store
 *.tsbuildinfo
+
+.vercel/
+.vercel-token
