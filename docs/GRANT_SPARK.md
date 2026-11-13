@@ -142,6 +142,17 @@ This turns secnev from “a good dashboard” into infrastructure other CKB team
 
 Run **10 validation sessions** with a mix of CKB depositors, wallet engineers, DEX/issuer teams and data analysts. The output is a public report: did the protocol signals change a decision, and did a developer get to a first successful request in under ten minutes?
 
+### 4.4 Extensible for the next CKB protocol or token
+
+This is not a one-off RUSD integration. The Spark work will formalize the pattern already used by secnev:
+
+- **asset/token registry** — add a new xUDT/RGB++ token by type hash and metadata;
+- **protocol adapter** — implement `getState()` for a new stablecoin or vault and map it to signals;
+- **pool/vault descriptors** — add a new UTXOSwap pool or vault through configuration;
+- **API and portal** — new entities appear through the registry and OpenAPI, not hand-written endpoints.
+
+The Stable++ adapter is the reference implementation. Adding the next CKB mainnet protocol should be a bounded adapter + config change, not a rewrite of ingestion, scoring, API or dashboard.
+
 ### Explicitly out of scope
 
 - no new assets or new risk categories beyond the Stable++ state;
@@ -177,6 +188,8 @@ CKB RPC / Explorer ──────────┘                         │
 - add `collateral_health`, `oracle_health` and `redemption_state` to the vault detector set;
 - cross-check oracle price against the live RUSD/CKB pool, publishing both plus TVL and last-trade age;
 - fixtures and tests so the adapter is reviewable without a live wallet.
+
+The adapter sits behind a small `ProtocolAdapter` interface. Asset metadata, pools and vaults stay registry/config-driven, so the next CKB protocol or token is an additive adapter + config change rather than a new fork of the ingestion, scoring, API or dashboard.
 
 **Developer Portal:**
 
@@ -274,6 +287,7 @@ If the Committee prefers a smaller first step, the priority order is:
 - Stable++ protocol-state adapter and three live RUSD signals.
 - Developer Portal v1: `/developers`, keys, usage limits, OpenAPI, SDK.
 - Dashboard/API integration.
+- A reusable `ProtocolAdapter` + registry pattern so future CKB mainnet protocols/tokens are additive.
 - 10 validation sessions.
 - Public validation and completion reports.
 
@@ -287,6 +301,7 @@ The existing risk engine, UI, alerting and data pipeline are not re-funded. Spar
 - **CKB-native primitives:** xUDT, type/lock scripts, UTXOSwap pool cells, iCKB Logic DAO cells, CKB Explorer/RPC.
 - **Stable++:** RUSD is a CKB-native over-collateralized stablecoin; its vault/oracle state is the missing risk layer.
 - **Ecosystem leverage:** the developer portal lets wallets, DEXs, issuers and data teams integrate CKB risk without rebuilding an indexer.
+- **Extensible by design:** new xUDT/RGB++ tokens and new mainnet protocols can be added through the registry/config + a small adapter, without rewriting ingestion, scoring, API or UI.
 - **Public good:** Apache-2.0 code, CC BY 4.0 data, free API, no token, no paid scores, no sponsored rankings.
 - **Open source:** all work merges into the existing public repository; the Committee can fork it into the Spark repository at completion.
 
@@ -313,4 +328,4 @@ secnev 是一个开源的 CKB 原生风险观测站。当前 MVP 已上线 10 �
 2. **Developer Portal v1**：`/developers`、自助 API Key、用量与限流、OpenAPI 3.1、TypeScript SDK；
 3. 10 位真实用户/开发者验证。
 
-现有风险引擎、Dashboard、告警和数据管道不重复申请。代码 Apache-2.0，数据 CC BY 4.0，免费 API，无代币、无付费评分、无赞助排名。
+现有风险引擎、Dashboard、告警和数据管道不重复申请。架构会进一步协议化、注册化：未来新的 CKB 主网协议或代币可以通过“适配器 + 配置”接入，不需要重写核心。代码 Apache-2.0，数据 CC BY 4.0，免费 API，无代币、无付费评分、无赞助排名。
