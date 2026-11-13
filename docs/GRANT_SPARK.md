@@ -1,16 +1,16 @@
-# Spark Program | secnev — CKB-native risk observatory
+﻿# Spark Program | secnev Developer Portal
 
 **Request:** **$1,000, 100% in CKB** · **Timeline:** 6 weeks · **Category:** developer tooling / public-good infrastructure
-**Repository:** https://github.com/TolgaYazan/secnev · **Live demo:** https://secnev.vercel.app
+**Repository:** https://github.com/TolgaYazan/secnev · **Live app:** https://secnev.vercel.app
 
 > Ready to post in **Nervos Talk → `daos-funding` → `Spark Program`**.
-> The Spark-Program tag is no longer required after the July 2026 forum change; selecting the Spark Program sub-section is the current venue.
+> The old `Spark-Program` tag is no longer required after the July 2026 forum change; the Spark Program sub-section is the current venue.
 
 ---
 
 ## 0. Title & tags
 
-**Title:** `Spark Program | secnev — CKB-native risk observatory`
+**Title:** `Spark Program | secnev Developer Portal`
 
 **Venue:** Nervos Talk → `daos-funding` → `Spark Program`
 
@@ -20,13 +20,31 @@
 
 ## 1. Project overview
 
-**Project name:** secnev
+**Project name:** secnev Developer Portal
 
-**One sentence:** secnev is an open, CKB-native risk observatory that turns live cells, scripts, pools and protocol state into explainable risk scores for CKB stablecoins, vaults, tokens and wallets.
+**One sentence:** A self-serve developer portal that turns secnev's CKB risk API into something a wallet, DEX, issuer or data team can integrate in under ten minutes — with API keys, usage limits, OpenAPI, a TypeScript SDK and live examples.
 
-**Positioning:** developer tooling / public-good risk infrastructure / open API + dashboard.
+**Positioning:** developer tooling / API infrastructure / public-good distribution layer.
 
-**Request:** $1,000, paid entirely in CKB, to add the missing **Stable++ protocol-state module** and validate it with 10 real CKB users.
+**Request:** $1,000, paid entirely in CKB, for a 6-week Developer Portal v1.
+
+### Why this, and not another detector?
+
+secnev already has the core risk intelligence:
+
+- live CKB cell ingestion and 10 assets;
+- RUSD/USDI pool price and liquidity;
+- iCKB exchange rate/backing;
+- organic holder concentration;
+- wallet exposure;
+- real dCKB replay;
+- alerts, dashboard and API.
+
+What it does **not** have is the Webacy-style **developer surface**: the place where an external team creates a key, reads the docs, makes a first request, sees usage and ships an integration. That is the missing last mile between “a good dashboard” and “infrastructure other CKB projects can build on.”
+
+This Spark project deliberately does **one** thing: Developer Portal v1. No new risk modules, no re-funding the existing MVP.
+
+The Webacy-vs-secnev comparison and the rejected alternatives are documented in `docs/WEBACY_GAP.md`.
 
 ---
 
@@ -34,9 +52,9 @@
 
 **Applicant:** Tolga Yazan — independent CKB-native engineer.
 
-**Role:** protocol/data engineering, cell indexing, detectors, API and dashboard.
+**Role:** API design, backend, developer experience, SDK and documentation.
 
-**Background:** built the working secnev MVP before this application: live CKB RPC/Explorer ingestion, xUDT parsing, UTXOSwap pool-cell reads, iCKB Logic DAO exchange-rate/backing, wallet exposure, real dCKB transaction replay, tests and a Vercel deployment.
+**Background:** built the working secnev MVP before this application: live CKB RPC/Explorer ingestion, xUDT parsing, UTXOSwap pool-cell reads, iCKB Logic DAO exchange-rate/backing, wallet exposure, real dCKB transaction replay, tests, dashboard and Vercel deployment.
 
 **GitHub:** https://github.com/TolgaYazan
 
@@ -52,60 +70,98 @@
 
 ## 3. Project background
 
-CKB has real assets but no independent risk layer. The dCKB drain (~24.6M CKB) and the RGB++ forged-proof incident (16.59M CKB, unnoticed for 80 days, per the ckb-adversary proposal) show what the blind spot costs.
+CKB has real assets but no independent risk layer. The dCKB drain (~24.6M CKB) and the RGB++ forged-proof incident (16.59M CKB, unnoticed for 80 days) show the cost of that blind spot.
 
-The current MVP already answers the market half of the question:
+secnev already exposes the intelligence:
 
-- 10 CKB assets scored from real mainnet cells.
-- **72/105 signal instances live; 33 explicitly `unknown`**.
-- The only RUSD/CKB pool we can read is **~26% off peg** with **~$1,078 TVL**; USDI is **~67% off** with **~$165 TVL**. Both pools are thin and ~30–40 days stale, and the dashboard publishes that staleness.
-- iCKB exchange rate/backing is live: **1.2989 CKB/iCKB**, 2,857,480.70 CKB of Logic DAO deposits against 2,199,999.92 iCKB.
-- Wallet exposure, real dCKB replay, full cell scans and Vercel deployment are working.
+- **72/105 live signal instances; 33 unknown**, with coverage disclosure.
+- The readable RUSD/CKB pool is **~26% off peg** with **~$1,078 TVL**; USDI is **~67% off** with **~$165 TVL**. Both are thin and stale, and the UI publishes that.
+- iCKB exchange rate/backing: **1.2989 CKB/iCKB**.
+- Wallet exposure, real dCKB replay, full cell scans, alerts and a Vercel deployment are working.
 
-**The missing half is protocol solvency.** A DEX price can tell a user that RUSD is off peg, but it cannot tell them whether the Stable++ vault is solvent, whether the oracle is healthy, or whether withdrawals/redemptions are functioning. That is the gap this Spark project closes.
+But a CKB wallet team, DEX, issuer or data analyst currently has to:
+
+1. discover the dashboard;
+2. guess the API shape from the browser;
+3. call unauthenticated endpoints without quota or usage visibility;
+4. write their own client and error handling;
+5. ask the maintainer for help.
+
+Webacy solved this with a developer portal: account, API key, usage, docs, SDK and examples. secnev needs the same **onboarding layer**, but free and open.
+
+This is a distribution problem, not a data problem. It is exactly the kind of small, concrete, verifiable gap Spark is for.
 
 ---
 
 ## 4. Solution
 
-Add a **Stable++ protocol-state adapter** to secnev and validate it with real users.
+Build **secnev Developer Portal v1** at `/developers` plus the API-key layer behind it.
 
-Users will be able to open RUSD and see three protocol-level signals next to the existing market signals:
+### What a developer gets
 
-1. **Collateral health** — vault cells, total debt, collateral ratio, MCR/TCR/CCR, liquidation buffer.
-2. **Oracle health** — oracle cell age, publisher/feed identity, deviation from the live DEX price.
-3. **Redemption / withdrawal state** — redemption fee/base rate, pause state, and whether the protocol can honour exits.
+1. **A five-minute quickstart**
+   - `curl`, TypeScript and Python examples for asset risk, wallet exposure, pools and vaults.
+2. **A self-serve API key**
+   - Enter an email and label, receive a key once.
+   - Keys are hashed at rest; the plaintext is never stored.
+   - Revoke a key from the portal.
+3. **Usage and limits**
+   - Free tier: 10,000 requests/month, 5 req/s.
+   - Anonymous access: 60 req/min per IP.
+   - `X-secnev-Quota`, `X-secnev-Used` and `Retry-After` headers.
+4. **An OpenAPI 3.1 contract**
+   - Every public endpoint, response shape and error code.
+   - Generated API reference on the portal.
+5. **A small TypeScript SDK**
+   - `createClient({ apiKey })` with typed methods:
+     `assets.list()`, `assets.get(id)`, `pools.list()`, `vaults.list()`, `wallet.screen(address)`.
+6. **Live examples**
+   - Copy-paste requests with real RUSD/USDI/iCKB data.
 
-Every new field is sourced from on-chain data. If a field is not publicly accessible or cannot be verified, it remains `unknown` with the reason published; nothing is invented.
+### What this is not
 
-The second deliverable is **10 user-validation sessions** with CKB depositors, wallet engineers and stablecoin users. The output is a public report: what they understood, what they distrusted, and which signal changed a decision.
-
-**Difference from existing tools:** no Tier-1 analytics vendor covers CKB. DefiLlama has no CKB L1 stablecoin/TVL data. secnev is CKB-native from the cell up, and it publishes evidence, coverage and confidence rather than a black-box score.
+- Not a paid tier or billing system.
+- Not a token, KYC or AML product.
+- Not another dashboard feature.
+- Not MCP in this scope; MCP is a clean follow-up after the API contract is stable.
 
 ---
 
 ## 5. Technical approach
 
-**Stack:** Node.js 24 + TypeScript, native `node:sqlite`, CKB public RPC `get_cells`, CKB Explorer API, vanilla JS dashboard, Vercel static + serverless functions.
+**Stack:** Node.js 24 + TypeScript, existing `node:sqlite` read-only snapshot, Vercel functions, Upstash Redis (free tier) for keys and usage counters, vanilla JS portal.
 
 **Architecture:**
 
 ```
-Stable++ vault/oracle cells ─┐
-CKB RPC / Explorer ──────────┼─> adapter ─> detectors ─> score ─> API / dashboard
-UTXOSwap RUSD pool ──────────┘                                      └─> evidence + coverage
+/developers (static portal)
+        │
+        ├─ POST /api/portal/key       create key (email + label)
+        ├─ GET  /api/portal/usage     usage + quota
+        └─ POST /api/portal/revoke    revoke key
+                    │
+             hashed key + counters
+                    │
+              Upstash Redis
+                    │
+/api/v1/*  ── auth + rate limit ──> existing risk API
 ```
 
-**Key technical points:**
+**Key design decisions:**
 
-- Locate Stable++ vault, debt and oracle cells from deployed scripts/hashes.
-- Decode cell data with the same little-endian/u128 and script-fingerprint utilities already used for xUDT and iCKB.
-- Add `collateral_health`, `oracle_health` and `redemption_state` to the vault detector set.
-- Keep the existing fail-closed rule: missing/stale data is `unknown`, never “safe”.
-- Cross-check oracle price against the live RUSD/CKB pool; publish both, including the pool’s TVL and last-trade age.
-- Add fixtures and tests so the adapter can be reviewed without a live wallet.
+- Keys are `sk_live_<random>`; only SHA-256 hashes are stored.
+- `x-api-key` header; anonymous requests are allowed but IP-limited.
+- Rate limits use Redis `INCR` + TTL windows.
+- The portal is static, so it stays fast and cheap on Vercel Hobby.
+- Portal endpoints are consolidated into one `/api/portal` function. The unused Vercel `/api/v1/assets/{id}/history` route is retired to keep the deployment at Hobby's 12-function limit; history remains in the local API.
+- The existing read-only SQLite snapshot is untouched; keys and counters live in Redis.
+- No private keys, no signing, no issuer-controlled ranking.
 
-**What is explicitly out of scope:** no private keys, no transaction signing, no paid scores, no token, no issuer-controlled ranking.
+**OpenAPI/SDK:**
+
+- One `openapi.json` is the source of truth for docs and the SDK.
+- The SDK is a thin typed `fetch` wrapper with no runtime dependencies.
+- Error handling: `401` invalid key, `403` revoked, `429` quota, `5xx` retry guidance.
 
 ---
 
@@ -113,14 +169,14 @@ UTXOSwap RUSD pool ──────────┘                            
 
 | Week | Work | Milestone |
 |---|---|---|
-| **1** | Map Stable++ vault/debt/oracle scripts and cell layouts; document every field and every unknown; create fixtures | Protocol map + fixture set |
-| **2** | Implement the Stable++ adapter; add collateral, oracle and redemption signals; unit tests | Adapter merged; tests pass |
-| **3** | Wire the new signals into the API and dashboard; deploy a preview; add evidence/coverage labels | Public preview with RUSD protocol state |
-| **4** | Run 10 user-validation sessions (CKB depositors, wallet engineers, Stable++/iCKB users); record feedback | Validation notes + issue list |
-| **5** | Fix the highest-impact issues; write integration docs and the public validation report | Docs + report |
-| **6** | Final demo, completion report, reproducible verification, handover | Spark completion package |
+| **1** | Write the OpenAPI 3.1 contract; define portal IA and quickstart content; freeze the public API shape | OpenAPI + portal outline |
+| **2** | Implement hashed keys, Redis storage, key creation/revocation, auth + rate-limit middleware | Keys work end-to-end |
+| **3** | Build `/developers` portal: quickstart, endpoint reference, key form, usage panel, copy-paste examples | Public portal live on preview |
+| **4** | Build the TypeScript SDK and examples; add tests for hashing, auth, limits and revocation | SDK + tests pass |
+| **5** | Deploy to production; run 10 developer-validation sessions with CKB wallet/DEX/issuer/data teams; fix onboarding friction | 10 sessions + issue list |
+| **6** | Final docs, security pass, public validation report, completion report, handover | Spark completion package |
 
-No week is “continue development”; each week has a concrete, verifiable output.
+Each week ends with a verifiable artifact.
 
 ---
 
@@ -128,17 +184,18 @@ No week is “continue development”; each week has a concrete, verifiable outp
 
 **Requested:** **$1,000 USD equivalent, 100% in CKB.**
 
-CKB amount will be calculated at the Committee’s approval-day rate. The request is denominated in USD so the scope is stable.
+CKB amount will be calculated at the Committee's approval-day rate. The request is denominated in USD so the scope is stable.
 
 | Item | Amount | Purpose |
 |---|---:|---|
-| Protocol engineering | **$650** | Stable++ cell/oracle mapping, adapter, 3 signals, tests, deployment |
-| User validation | **$200** | 10 sessions, incentives, synthesis, report |
-| Infrastructure | **$50** | RPC/Explorer usage, Vercel, monitoring |
-| Documentation / design | **$100** | Integration guide, public report, dashboard polish |
+| Portal backend + auth/usage | **$450** | Key hashing, Redis, rate limits, portal endpoints, tests |
+| Docs + OpenAPI + TypeScript SDK | **$300** | Contract, API reference, quickstart, SDK, examples |
+| Portal UI/UX | **$100** | `/developers` page, key form, usage panel, responsive polish |
+| 10 developer-validation sessions | **$100** | Recruitment, sessions, synthesis, report |
+| Infrastructure | **$50** | Vercel + Upstash Redis free-tier overage / monitoring |
 | **Total** | **$1,000** | **100% CKB** |
 
-This is a single-category technical project with a small user-validation component. It is within the standard $1,000 Spark range; no special $2,000 justification is requested.
+This is a single-category developer-tooling project with a small validation component. It stays within the standard $1,000 Spark range; no $2,000 justification is requested.
 
 ---
 
@@ -146,23 +203,27 @@ This is a single-category technical project with a small user-validation compone
 
 ### Deliverables
 
-1. **Stable++ adapter** in the public repo, with fixtures.
-2. **3 live RUSD signals:** collateral health, oracle health, redemption/withdrawal state.
-3. **Dashboard + API** showing the new signals with evidence, confidence and coverage.
-4. **10-user validation report** with feedback and decisions.
-5. **Public completion report** comparing the plan with the delivered work.
-6. **Reproducible deploy** on Vercel and local `npm run dev`.
+1. **`/developers` portal** with quickstart, API reference and examples.
+2. **Self-serve API keys** — create, display once, revoke.
+3. **Usage + rate limits** — quota panel and headers.
+4. **OpenAPI 3.1 contract** for all public endpoints.
+5. **TypeScript SDK** with typed methods and examples.
+6. **Tests** for key hashing, auth, quota, revocation and error codes.
+7. **10-developer validation report** and public completion report.
 
 ### How to verify (no code review required)
 
-- Open **https://secnev.vercel.app**, open RUSD, and inspect the three new signals and their evidence.
-- Call `GET https://secnev.vercel.app/api/v1/assets/{RUSD-id}` and check the JSON signals.
-- Run `npm test` and `npm run ingest` locally; fixtures make the adapter reproducible.
+- Open **https://secnev.vercel.app/developers**.
+- Create a key with any email, copy it once.
+- Run the displayed `curl` command; the response is real CKB risk data.
+- Open the usage panel; the request count increases.
+- Revoke the key; the same request returns `401`.
+- Run the SDK example; it returns typed asset data.
 - Read the public validation report and completion report.
-- Check the GitHub repository and the deployed commit.
-- Environment: Node 24+, public CKB RPC/Explorer, no wallet or private key needed.
+- Run `npm test` locally for the key/rate-limit tests.
+- Environment: Node 24+, public CKB RPC/Explorer; no wallet or private key.
 
-**Acceptance standard:** a reviewer can verify the three signals and the validation report in under 15 minutes without reading the full codebase.
+**Acceptance standard:** a new developer can go from landing on `/developers` to a successful authenticated request in **under 10 minutes**, without reading the codebase.
 
 ---
 
@@ -172,29 +233,32 @@ This is a single-category technical project with a small user-validation compone
 
 - 10 CKB assets, live RPC/Explorer ingestion.
 - 72/105 live signal instances; 33 unknown, with coverage disclosure.
-- RUSD and USDI market price/liquidity from UTXOSwap pool cells.
+- RUSD/USDI market price and liquidity from UTXOSwap pool cells.
 - iCKB exchange rate/backing.
 - Organic holder concentration, wallet exposure, real dCKB replay.
-- Full cell scans, tests, dashboard, API, Vercel deployment.
+- Full cell scans, tests, dashboard, API and Vercel deployment.
 
 **Funded delta (Spark):**
 
-- Stable++ **protocol-state** adapter (vault/debt/oracle/redemption).
-- 3 new RUSD signals integrated into the dashboard/API.
-- 10 real user-validation sessions.
+- `/developers` onboarding portal.
+- Hashed API keys + revocation.
+- Usage metering + free-tier limits.
+- OpenAPI 3.1 contract.
+- TypeScript SDK.
+- 10 developer-validation sessions.
 - Public validation + completion reports.
 
-This is intentionally a narrow delta, not a re-funding of the existing MVP.
+This is a narrow, additive delta — not a re-funding of the existing risk engine.
 
 ---
 
 ## 10. CKB alignment
 
-- **Cell model:** the adapter reads live cells, scripts and cell data directly; no EVM-style logs.
-- **CKB-native primitives:** xUDT, type/lock scripts, UTXOSwap pool cells, iCKB Logic DAO cells, CKB Explorer/RPC.
-- **Stable++:** RUSD is a CKB-native over-collateralized stablecoin; its vault/oracle state is the missing risk layer.
-- **Public good:** Apache-2.0 code, CC BY 4.0 data, no token, no paid scores, no sponsored rankings.
-- **Open source:** all work is merged into the existing public repository; the Committee can fork it into the Spark repository at completion.
+- **CKB-native data:** the API exposes cell-derived risk for CKB stablecoins, vaults, xUDT/RGB++ tokens and wallets.
+- **Ecosystem leverage:** wallets, DEXs, issuers and data teams can integrate CKB risk without rebuilding an indexer.
+- **Public good:** Apache-2.0 code, CC BY 4.0 data, free API, no token, no paid scores, no sponsored rankings.
+- **Open source:** all work merges into the existing public repository; the Committee can fork it into the Spark repository at completion.
+- **Web5 spirit:** lower the barrier for small CKB builders to use real risk intelligence, rather than forcing each team to become a data company.
 
 ---
 
@@ -202,16 +266,15 @@ This is intentionally a narrow delta, not a re-funding of the existing MVP.
 
 - [ ] Add Discord username above.
 - [ ] Confirm the GitHub repo is public and under the applicant account.
-- [ ] Post in **Nervos Talk → `daos-funding` → `Spark Program`** with the title `Spark Program | secnev — CKB-native risk observatory`.
+- [ ] Post in **Nervos Talk → `daos-funding` → `Spark Program`** with the title `Spark Program | secnev Developer Portal`.
 - [ ] Do **not** use the old `Spark-Program` tag; the sub-section is the current venue.
 - [ ] Include the live demo and repo links.
-- [ ] Reply to Committee questions with concrete evidence, not generated claims.
 - [ ] At approval, set up the multi-sig flow and publish the first weekly update.
 
 ---
 
 ## 中文摘要
 
-secnev 是一个开源的 CKB 原生风险观测站。当前 MVP 已上线 10 个资产、72/105 个实时信号，RUSD/USDI 的 DEX 价格与流动性、iCKB 汇率与抵押率、钱包暴露、真实 dCKB 交易回放和 Vercel 演示均已可用。
+secnev 已经有可用的 CKB 风险数据、Dashboard 和公开 API，但缺少 Webacy 那样的 **开发者入口**：没有 API Key、用量限制、OpenAPI、SDK 和快速上手文档。外部钱包、DEX、发行方或数据团队要接入，只能自己猜接口、自己写客户端。
 
-本次 Spark 申请 **1,000 美元，100% 以 CKB 支付，周期 6 周**，只做一件明确的增量：补齐 **Stable++ 协议状态模块**（抵押率/TCR/CCR、预言机健康度、赎回/提现状态），并用 10 位真实用户验证。现有 MVP 不重复申请；资助范围是当前状态与交付物之间的差值。代码 Apache-2.0，数据 CC BY 4.0，无代币、无付费评分、无赞助排名。
+本次 Spark 申请 **1,000 美元，100% 以 CKB 支付，周期 6 周**，只做 **Developer Portal v1**：`/developers` 页面、自助 API Key（哈希存储、可撤销）、用量与限流、OpenAPI 3.1、TypeScript SDK、10 位开发者验证。现有风险引擎不重复申请。代码 Apache-2.0，数据 CC BY 4.0，免费 API，无代币、无付费评分、无赞助排名。

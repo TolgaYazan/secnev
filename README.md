@@ -226,7 +226,7 @@ See `docs/METHODOLOGY.md`, `docs/SOURCES.md`, and the grant package:
 
 - `docs/GRANT.md` — full Phase 1 plan and budget
 - `docs/GRANT_DAO_POST.md` — submission-ready DAO discussion post (EN + ZH summary)
-- `docs/GRANT_SPARK.md` — $1k Spark application (6 weeks, 100% CKB)
+- `docs/GRANT_SPARK.md` — $1k Spark application for Developer Portal v1 (6 weeks, 100% CKB)
 - `docs/VERCEL.md` — Vercel Hobby deployment (snapshot + optional Blob cron)
 
 ---
