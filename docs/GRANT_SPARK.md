@@ -35,6 +35,39 @@
 
 These are one coherent product story: **market risk + protocol risk + developer access**.
 
+### Product and funding map
+
+```mermaid
+flowchart LR
+    A["CKB cells<br/>RPC + Explorer"] --> B["Risk detectors<br/>+ scoring"]
+    S["Stable++ protocol state<br/>collateral / oracle / redemption"] --> B
+    B --> C["Dashboard<br/>+ RUSD detail"]
+    B --> D["Free REST API"]
+    B --> E["Alerts<br/>webhook / Telegram / email"]
+    D --> P["Developer Portal v1<br/>API keys + usage"]
+    P --> K["OpenAPI 3.1<br/>+ TypeScript SDK"]
+
+    classDef live fill:#0e2a26,stroke:#2dd4a7,color:#e8f0f2,stroke-width:1.5px;
+    classDef spark fill:#2a1a1c,stroke:#ff6b6b,color:#e8f0f2,stroke-width:1.5px;
+    class A,B,C,D,E live;
+    class S,P,K spark;
+```
+
+*Teal = already live. Coral = Spark-funded delta.*
+
+### Live product screenshots
+
+![secnev overview](https://raw.githubusercontent.com/TolgaYazan/secnev/main/docs/assets/overview.png)
+*Dashboard: 10 assets, 72/105 live signals, RUSD and USDI critical.*
+
+![RUSD detail](https://raw.githubusercontent.com/TolgaYazan/secnev/main/docs/assets/rusd-detail.png)
+*RUSD detail: market peg, thin liquidity, organic concentration and evidence.*
+
+![Wallet exposure](https://raw.githubusercontent.com/TolgaYazan/secnev/main/docs/assets/wallet.png)
+*Wallet exposure: lock label, balance, token holdings and counterparties; taint stays `unknown`.*
+
+> If Nervos Talk does not fetch GitHub images, upload the three files from `docs/assets/` and replace the links with the uploaded URLs.
+
 ---
 
 ## 2. Team profile
